@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Energy Consumption Predictor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Energy Consumption Predictor</h1>
+    <form id="predict-form">
+      <input type="number" name="Energy_Production_MWh" placeholder="Energy Production (MWh)" required>
+
+      <label for="Type_of_Renewable_Energy">Type of Renewable Energy</label>
+      <select name="Type_of_Renewable_Energy" id="Type_of_Renewable_Energy" required>
+        <option value="1">Solar</option>
+        <option value="2">Wind</option>
+        <option value="3">Hydroelectric</option>
+        <option value="4">Geothermal</option>
+        <option value="5">Biomass</option>
+        <option value="6">Tidal</option>
+        <option value="7">Wave</option>
+      </select>
+
+      <input type="number" name="Installed_Capacity_MW" placeholder="Installed Capacity (MW)" required>
+      <input type="number" name="Energy_Storage_Capacity_MWh" placeholder="Energy Storage Capacity (MWh)" required>
+      <input type="number" name="Storage_Efficiency_Percentage" placeholder="Storage Efficiency (%)" required>
+      <input type="number" name="Grid_Integration_Level" placeholder="Grid Integration Level" required>
+
+      <label for="model_type" style="margin-top:1em;">Model Type:</label>
+      <select id="model_type" name="model_type">
+        <option value="rf">Random Forest</option>
+        <option value="cnn">CNN (Deep Learning)</option>
+        <option value="rnn">RNN (Deep Learning)</option>
+      </select>
+      <button type="submit">Predict</button>
+    </form>
+    <div id="result"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
