@@ -32,7 +32,7 @@ from tensorflow.keras.models import load_model
 
 app = FastAPI()
 ui_path = os.path.join(os.path.dirname(__file__), "ui")
-app.mount("/ui", StaticFiles(directory=ui_path), name="ui")
+app.mount("/ui", StaticFiles(directory="ui"), name="ui")
 
 FEATURES = [
     'Energy_Production_MWh',
