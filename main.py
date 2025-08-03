@@ -20,18 +20,14 @@ model_files = ["best_rf_model.pkl", "cnn_model.keras", "rnn_model.keras", "scale
 for model_file in model_files:
     download_blob_if_not_exists(CONTAINER, model_file, os.path.join("models", model_file), CONNECTION_STRING)
 
-
-
 from fastapi import FastAPI, Query
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 import joblib
 import numpy as np
-import os
 from tensorflow.keras.models import load_model
 
 app = FastAPI()
-ui_path = os.path.join(os.path.dirname(__file__), "ui")
 app.mount("/ui", StaticFiles(directory="ui"), name="ui")
 
 FEATURES = [
@@ -51,21 +47,20 @@ numeric_features = [
     'Grid_Integration_Level'
 ]
 
-scaler = joblib.load(os.path.join("..", "..", "models", "scaler.pkl"))
-rf_model = joblib.load(os.path.join("..", "..", "models", "best_rf_model.pkl"))
-cnn_model = load_model(os.path.join("..", "..", "models", "cnn_model.keras"))
-rnn_model = load_model(os.path.join("..", "..", "models", "rnn_model.keras"))
+# --- FIXED PATHS ---
+scaler = joblib.load(os.path.join("models", "scaler.pkl"))
+rf_model = joblib.load(os.path.join("models", "best_rf_model.pkl"))
+cnn_model = load_model(os.path.join("models", "cnn_model.keras"))
+rnn_model = load_model(os.path.join("models", "rnn_model.keras"))
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    with open(os.path.join("ui/index.html", "r", encoding="utf-8") as f:
+    with open(os.path.join("ui", "index.html"), "r", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
 
 @app.post("/predict/")
 async def predict(features: dict, model_type: str = Query("rf")):
-    # Convert incoming to DataFrame for scaling
-    X_input = np.array([[features.get(feat, 0) for feat in FEATURES]])
     X_df = {feat: [features.get(feat, 0)] for feat in FEATURES}
     import pandas as pd
     X_df = pd.DataFrame(X_df)
