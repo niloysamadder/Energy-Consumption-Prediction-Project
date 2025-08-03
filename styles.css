@@ -1,0 +1,28 @@
+body {
+  background: #f8f9fa;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+.container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  background: #fff;
+}
+h1 { text-align: center; color: #34568B; }
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 1em;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+button {
+  background: #34568B; color: #fff; border: none;
+  cursor: pointer; transition: background 0.2s;
+}
+button:hover { background: #24365A; }
+#result { margin-top: 1.5em; text-align: center; font-size: 1.2em; }
+label { display: block; color: #34568B; margin-top: 1em; }
