@@ -1,8 +1,10 @@
 fastapi
 uvicorn
+gunicorn
 azure-storage-blob
 scikit-learn
-pandas
-numpy
 tensorflow
+numpy
+pandas
 python-multipart
+
