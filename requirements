@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+azure-storage-blob
+scikit-learn
+pandas
+numpy
+tensorflow
+python-multipart
