@@ -58,7 +58,7 @@ rnn_model = load_model(os.path.join("..", "..", "models", "rnn_model.keras"))
 
 @app.get("/", response_class=HTMLResponse)
 async def root():
-    with open(os.path.join(ui_path, "index.html"), "r", encoding="utf-8") as f:
+    with open(os.path.join("ui/index.html", "r", encoding="utf-8") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content)
 
